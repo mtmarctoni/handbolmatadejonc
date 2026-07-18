@@ -7,6 +7,17 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
+
+const sponsors = [
+  { name: 'Patrocinador 1', logo: '/images/sponsor1.png' },
+  { name: 'Patrocinador 2', logo: '/images/sponsor2.png' },
+  { name: 'Patrocinador 3', logo: '/images/sponsor3.png' },
+];
+
+const collaborators = [
+  { name: 'Col·laborador 1', logo: '/images/collaborator1.png' },
+  { name: 'Col·laborador 2', logo: '/images/collaborator2.png' },
+];
 ---
 
 <section id="sponsors" class="py-20 bg-gray-50">
@@ -15,39 +26,26 @@ const t = getDictionary(locale);
       {t.sponsors.title}
     </h2>
     
-    <!-- Sponsor logos placeholder - will be populated with real images -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai patrocinador</span>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai patrocinador</span>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai patrocinador</span>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai patrocinador</span>
-      </div>
+    <!-- Sponsor logos -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
+      {sponsors.map((sponsor) => (
+        <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+          <img src={sponsor.logo} alt={sponsor.name} class="max-h-24 max-w-full object-contain" />
+        </div>
+      ))}
     </div>
 
     <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mt-20 mb-12">
       {t.collaborators.title}
     </h2>
     
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai col·laborador</span>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai col·laborador</span>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai col·laborador</span>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
-        <span class="text-gray-400 text-sm">Espai col·laborador</span>
-      </div>
+    <!-- Collaborator logos -->
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-8 items-center justify-items-center">
+      {collaborators.map((collaborator) => (
+        <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+          <img src={collaborator.logo} alt={collaborator.name} class="max-h-24 max-w-full object-contain" />
+        </div>
+      ))}
     </div>
   </div>
 </section>

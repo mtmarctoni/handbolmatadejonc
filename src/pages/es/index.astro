@@ -2,37 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Hero from '../../components/sections/Hero.astro';
 import About from '../../components/sections/About.astro';
 import Sponsors from '../../components/sections/Sponsors.astro';
 import BecomeSponsor from '../../components/sections/BecomeSponsor.astro';
 import Contact from '../../components/sections/Contact.astro';
-import { getDictionary } from '../../i18n';
-
-const t = getDictionary('es');
 ---
 
 <BaseLayout locale="es" title="Inicio">
   <Header locale="es" />
   
   <main>
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary to-dark text-white py-20 md:py-32">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6">
-          {t.site.name}
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-200 mb-8">
-          {t.site.tagline}
-        </p>
-        <a
-          href="#contact"
-          class="inline-block bg-secondary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors"
-        >
-          {t.contact.title}
-        </a>
-      </div>
-    </section>
-
+    <Hero locale="es" />
     <About locale="es" />
     <Sponsors locale="es" />
     <BecomeSponsor locale="es" />
