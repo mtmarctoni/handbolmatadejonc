@@ -23,15 +23,11 @@ const t = getDictionary(locale);
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div class="animate-fade-up">
-        <span class="inline-block px-4 py-1 bg-white/10 text-white text-sm font-accent font-bold uppercase tracking-wider rounded-full mb-6 border border-white/20">
-          Patrocini
-        </span>
-        
         <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-8 leading-tight">
           {t.becomeSponsor.title}
         </h2>
         
-        <p class="text-lg text-gray-400 leading-relaxed mb-10">
+        <p class="text-lg text-white/70 leading-relaxed mb-10">
           {t.becomeSponsor.description}
         </p>
         
@@ -46,22 +42,24 @@ const t = getDictionary(locale);
         </a>
       </div>
       
-      <div class="grid grid-cols-2 gap-4 animate-fade-up stagger-2">
-        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-          <div class="text-4xl font-heading font-bold text-primary mb-2">+20</div>
-          <div class="text-sm text-gray-400">Anyos d'història</div>
-        </div>
-        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-          <div class="text-4xl font-heading font-bold text-primary mb-2">100+</div>
-          <div class="text-sm text-gray-400">Esportistes</div>
-        </div>
-        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-          <div class="text-4xl font-heading font-bold text-primary mb-2">50+</div>
-          <div class="text-sm text-gray-400">Equips</div>
-        </div>
-        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-          <div class="text-4xl font-heading font-bold text-primary mb-2">∞</div>
-          <div class="text-sm text-gray-400">Passió</div>
+      <div class="animate-fade-up stagger-2">
+        <div class="bg-white/5 rounded-3xl border border-white/10 p-8 backdrop-blur-sm">
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="text-primary text-2xl font-heading font-bold">+20</span>
+              <span class="text-white/70">anys formant esportistes</span>
+            </div>
+            <div class="w-full h-px bg-white/10"></div>
+            <div class="flex items-center gap-4">
+              <span class="text-primary text-2xl font-heading font-bold">100+</span>
+              <span class="text-white/70">esportistes actius</span>
+            </div>
+            <div class="w-full h-px bg-white/10"></div>
+            <div class="flex items-center gap-4">
+              <span class="text-primary text-2xl font-heading font-bold">50+</span>
+              <span class="text-white/70">equips en competició</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
