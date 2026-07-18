@@ -1,5 +1,6 @@
 ---
 import { getDictionary, type Locale } from '../../i18n';
+import ContactForm from './ContactForm.astro';
 
 interface Props {
   locale: Locale;
@@ -15,20 +16,31 @@ const t = getDictionary(locale);
       {t.contact.title}
     </h2>
     
-    <div class="max-w-2xl mx-auto">
-      <address class="not-italic text-center text-lg text-gray-700 space-y-4">
-        <p>{t.contact.address}</p>
-        <p>
-          <a href={`mailto:${t.contact.email}`} class="text-primary hover:text-primary/80 transition-colors font-semibold">
-            {t.contact.email}
-          </a>
-        </p>
-        <p>
-          <a href={`tel:+34${t.contact.phone.replace(/\s/g, '')}`} class="text-primary hover:text-primary/80 transition-colors font-semibold">
-            {t.contact.phone}
-          </a>
-        </p>
-      </address>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-4">{t.contact.title}</h3>
+          <address class="not-italic text-lg text-gray-700 space-y-4">
+            <p>{t.contact.address}</p>
+            <p>
+              <a href={`mailto:${t.contact.email}`} class="text-primary hover:text-primary/80 transition-colors font-semibold">
+                {t.contact.email}
+              </a>
+            </p>
+            <p>
+              <a href={`tel:+34${t.contact.phone.replace(/\s/g, '')}`} class="text-primary hover:text-primary/80 transition-colors font-semibold">
+                {t.contact.phone}
+              </a>
+            </p>
+          </address>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div>
+        <ContactForm locale={locale} />
+      </div>
     </div>
   </div>
 </section>

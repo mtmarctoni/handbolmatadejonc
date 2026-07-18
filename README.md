@@ -1,6 +1,6 @@
 # Club Handbol Mata de Jonc
 
-Official website for Club Handbol Mata de Jonc, rebuilt with Astro and Cloudflare Pages.
+Official website for Club Handbol Mata de Jonc, built with Astro.
 
 ## Tech Stack
 
@@ -33,17 +33,24 @@ pnpm check
 
 ## Deployment
 
+Deploy to Cloudflare Pages:
+
 ```bash
-# Deploy to Cloudflare Pages
-./scripts/deploy.sh
+# Build the site
+pnpm build
+
+# Deploy using wrangler
+npx wrangler pages deploy dist --project-name handbolmatadejonc
 ```
+
+Or connect your GitHub repository to Cloudflare Pages for automatic deployments.
 
 ## Project Structure
 
 ```
 src/
 ├── components/       # Reusable UI components
-│   ├── sections/     # Page sections (About, Sponsors, etc.)
+│   ├── sections/     # Page sections (About, Sponsors, Contact, etc.)
 │   ├── Header.astro
 │   ├── Footer.astro
 │   └── SEO.astro
@@ -59,3 +66,7 @@ src/
 ## Content
 
 All content is in Catalan by default, with Spanish and English translations available. The site uses verbatim copy from the original Wix site to maintain consistency.
+
+## Contact Form
+
+The contact form uses FormSubmit.co for form handling. Forms submit directly to `handbolmatadejonc@gmail.com` without requiring server-side code.
