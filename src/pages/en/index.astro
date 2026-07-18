@@ -2,6 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import About from '../../components/sections/About.astro';
+import Sponsors from '../../components/sections/Sponsors.astro';
+import BecomeSponsor from '../../components/sections/BecomeSponsor.astro';
+import Contact from '../../components/sections/Contact.astro';
 import { getDictionary } from '../../i18n';
 
 const t = getDictionary('en');
@@ -29,88 +33,10 @@ const t = getDictionary('en');
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
-          {t.about.title}
-        </h2>
-        <div class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
-          <p>{t.about.history}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sponsors Section -->
-    <section id="sponsors" class="py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
-          {t.sponsors.title}
-        </h2>
-        
-        <!-- Sponsor placeholder - will be populated later -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-          <div class="text-gray-400 text-sm">Espai patrocinador</div>
-          <div class="text-gray-400 text-sm">Espai patrocinador</div>
-          <div class="text-gray-400 text-sm">Espai patrocinador</div>
-          <div class="text-gray-400 text-sm">Espai patrocinador</div>
-        </div>
-
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mt-20 mb-12">
-          {t.collaborators.title}
-        </h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-          <div class="text-gray-400 text-sm">Espai col·laborador</div>
-          <div class="text-gray-400 text-sm">Espai col·laborador</div>
-          <div class="text-gray-400 text-sm">Espai col·laborador</div>
-          <div class="text-gray-400 text-sm">Espai col·laborador</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Become a Sponsor CTA -->
-    <section class="py-20 bg-primary text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-8">
-          {t.becomeSponsor.title}
-        </h2>
-        <p class="max-w-3xl mx-auto text-lg text-gray-200 leading-relaxed mb-8">
-          {t.becomeSponsor.description}
-        </p>
-        <a
-          href="#contact"
-          class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
-        >
-          {t.contact.title}
-        </a>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
-          {t.contact.title}
-        </h2>
-        
-        <div class="max-w-2xl mx-auto">
-          <address class="not-italic text-center text-lg text-gray-700 space-y-4">
-            <p>{t.contact.address}</p>
-            <p>
-              <a href={`mailto:${t.contact.email}`} class="text-primary hover:text-primary/80 transition-colors font-semibold">
-                {t.contact.email}
-              </a>
-            </p>
-            <p>
-              <a href={`tel:+34${t.contact.phone.replace(/\s/g, '')}`} class="text-primary hover:text-primary/80 transition-colors font-semibold">
-                {t.contact.phone}
-              </a>
-            </p>
-          </address>
-        </div>
-      </div>
-    </section>
+    <About locale="en" />
+    <Sponsors locale="en" />
+    <BecomeSponsor locale="en" />
+    <Contact locale="en" />
   </main>
 
   <Footer locale="en" />

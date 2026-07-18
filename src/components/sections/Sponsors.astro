@@ -1,0 +1,53 @@
+---
+import { getDictionary, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<section id="sponsors" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+      {t.sponsors.title}
+    </h2>
+    
+    <!-- Sponsor logos placeholder - will be populated with real images -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai patrocinador</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai patrocinador</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai patrocinador</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai patrocinador</span>
+      </div>
+    </div>
+
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mt-20 mb-12">
+      {t.collaborators.title}
+    </h2>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai col·laborador</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai col·laborador</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai col·laborador</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32 w-full">
+        <span class="text-gray-400 text-sm">Espai col·laborador</span>
+      </div>
+    </div>
+  </div>
+</section>
