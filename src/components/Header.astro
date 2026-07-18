@@ -17,31 +17,39 @@ const localeLabels: Record<Locale, string> = {
 const otherLocales = (['ca', 'es', 'en'] as Locale[]).filter(l => l !== locale);
 ---
 
-<header class="bg-white shadow-sm sticky top-0 z-50">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center py-4">
-      <a href={locale === 'ca' ? '/' : `/${locale}/`} class="flex items-center gap-3">
-        <img src="/logo.png" alt={t.site.name} class="h-16 w-auto" />
-        <div>
-          <h1 class="text-xl font-heading font-bold text-dark">{t.site.name}</h1>
-          <p class="text-sm text-gray-600">{t.site.tagline}</p>
+      <a href={locale === 'ca' ? '/' : `/${locale}/`} class="flex items-center gap-3 group">
+        <div class="relative">
+          <img src="/images/logo.png" alt={t.site.name} class="h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="hidden sm:block">
+          <h1 class="text-lg font-heading font-bold text-dark tracking-tight">{t.site.name}</h1>
+          <p class="text-xs font-accent text-muted uppercase tracking-widest">{t.site.tagline}</p>
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-dark hover:text-primary transition-colors">{t.nav.about}</a>
-        <a href="#sponsors" class="text-dark hover:text-primary transition-colors">{t.nav.sponsors}</a>
-        <a href="#contact" class="text-dark hover:text-primary transition-colors">{t.nav.contact}</a>
-        <a href="https://www.instagram.com/chmatadejonc/" target="_blank" rel="noopener noreferrer" class="text-dark hover:text-primary transition-colors">
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#about" class="px-4 py-2 text-sm font-medium text-dark hover:text-primary transition-colors rounded-lg hover:bg-primary/5">
+          {t.nav.about}
+        </a>
+        <a href="#sponsors" class="px-4 py-2 text-sm font-medium text-dark hover:text-primary transition-colors rounded-lg hover:bg-primary/5">
+          {t.nav.sponsors}
+        </a>
+        <a href="#contact" class="px-4 py-2 text-sm font-medium text-dark hover:text-primary transition-colors rounded-lg hover:bg-primary/5">
+          {t.nav.contact}
+        </a>
+        <a href="https://www.instagram.com/chmatadejonc/" target="_blank" rel="noopener noreferrer" class="ml-2 px-4 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
           {t.nav.instagram}
         </a>
       </nav>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
         {otherLocales.map((loc) => (
           <a
             href={loc === 'ca' ? '/' : `/${loc}/`}
-            class="px-2 py-1 text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+            class="px-3 py-1 text-xs font-accent font-bold text-muted hover:text-primary transition-colors rounded-md hover:bg-white"
           >
             {localeLabels[loc]}
           </a>
