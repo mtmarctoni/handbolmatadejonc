@@ -1,0 +1,21 @@
+---
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+
+interface Props {
+  locale: string;
+  title?: string;
+}
+
+const { locale, title = 'Inici' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <SEO title={title} locale={locale} />
+  </head>
+  <body class="min-h-screen bg-white text-dark font-body">
+    <slot />
+  </body>
+</html>

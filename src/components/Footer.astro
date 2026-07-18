@@ -1,0 +1,39 @@
+---
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<footer class="bg-dark text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-heading font-bold mb-4">{t.site.name}</h3>
+        <p class="text-gray-400">{t.site.tagline}</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-heading font-bold mb-4">{t.contact.title}</h3>
+        <address class="not-italic text-gray-400 space-y-2">
+          <p>{t.contact.address}</p>
+          <p><a href={`mailto:${t.contact.email}`} class="hover:text-secondary transition-colors">{t.contact.email}</a></p>
+          <p><a href={`tel:+34${t.contact.phone.replace(/\s/g, '')}`} class="hover:text-secondary transition-colors">{t.contact.phone}</a></p>
+        </address>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-heading font-bold mb-4">{t.nav.about}</h3>
+        <p class="text-gray-400 mb-4">{t.about.history}</p>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+      <p>{t.footer.copyright}</p>
+    </div>
+  </div>
+</footer>

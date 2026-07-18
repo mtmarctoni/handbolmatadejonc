@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  locale: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description = 'Club Handbol Mata de Jonc - Tots Units Feim Força!',
+  locale,
+  canonicalURL = 'https://www.handbolmatadejonc.com',
+} = Astro.props;
+
+const locales = ['ca', 'es', 'en'];
+const siteName = 'Club Handbol Mata de Jonc';
+const ogImage = 'https://www.handbolmatadejonc.com/og-image.png';
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title} | {siteName}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+{locales.map((loc) => (
+  <link
+    rel="alternate"
+    hreflang={loc}
+    href={loc === 'ca' ? 'https://www.handbolmatadejonc.com/' : `https://www.handbolmatadejonc.com/${loc}/`}
+  />
+))}
+<link rel="alternate" hreflang="x-default" href="https://www.handbolmatadejonc.com/" />
+
+<meta property="og:title" content={`${title} | ${siteName}`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:type" content="website" />
+
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org/",
+  "@type": "LocalBusiness",
+  "name": "Handbol Mata de Jonc",
+  "url": "https://www.handbolmatadejonc.com",
+  "image": "https://www.handbolmatadejonc.com/og-image.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C/ Son Espanyolet, 49",
+    "addressLocality": "Palma",
+    "postalCode": "07014",
+    "addressCountry": "ES"
+  },
+  "telephone": "646741124"
+}
+</script>
+
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "Handbol Mata de Jonc",
+  "url": "https://www.handbolmatadejonc.com"
+}
+</script>

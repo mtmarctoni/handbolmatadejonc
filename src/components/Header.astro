@@ -1,0 +1,52 @@
+---
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+const localeLabels: Record<Locale, string> = {
+  ca: 'CA',
+  es: 'ES',
+  en: 'EN',
+};
+
+const otherLocales = (['ca', 'es', 'en'] as Locale[]).filter(l => l !== locale);
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <a href={locale === 'ca' ? '/' : `/${locale}/`} class="flex items-center gap-3">
+        <img src="/logo.png" alt={t.site.name} class="h-16 w-auto" />
+        <div>
+          <h1 class="text-xl font-heading font-bold text-dark">{t.site.name}</h1>
+          <p class="text-sm text-gray-600">{t.site.tagline}</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-dark hover:text-primary transition-colors">{t.nav.about}</a>
+        <a href="#sponsors" class="text-dark hover:text-primary transition-colors">{t.nav.sponsors}</a>
+        <a href="#contact" class="text-dark hover:text-primary transition-colors">{t.nav.contact}</a>
+        <a href="https://www.instagram.com/chmatadejonc/" target="_blank" rel="noopener noreferrer" class="text-dark hover:text-primary transition-colors">
+          {t.nav.instagram}
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        {otherLocales.map((loc) => (
+          <a
+            href={loc === 'ca' ? '/' : `/${loc}/`}
+            class="px-2 py-1 text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+          >
+            {localeLabels[loc]}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
