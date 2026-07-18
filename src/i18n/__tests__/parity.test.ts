@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { ca } from '../ca';
 import { es } from '../es';
 import { en } from '../en';
-import type { TranslationContent } from '../types';
 
 function getKeys(obj: any, prefix = ''): string[] {
   return Object.keys(obj).flatMap(key => {
