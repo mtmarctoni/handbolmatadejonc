@@ -1,0 +1,40 @@
+---
+interface Props {
+  image: string;
+  height?: string;
+  overlay?: 'dark' | 'green' | 'none';
+  children?: any;
+}
+
+const { image, height = 'h-80', overlay = 'dark', children } = Astro.props;
+
+const overlayClasses = {
+  dark: 'bg-dark/60',
+  green: 'bg-primary/40',
+  none: '',
+};
+---
+
+<section 
+  class={`${height} relative flex items-center justify-center overflow-hidden`}
+  style={`background-image: url('${image}'); background-size: cover; background-position: center; background-attachment: fixed;`}
+>
+  <div class={`absolute inset-0 ${overlayClasses[overlay]}`}></div>
+  <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+    {children}
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    section {
+      background-attachment: scroll !important;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    section {
+      background-attachment: scroll !important;
+    }
+  }
+</style>

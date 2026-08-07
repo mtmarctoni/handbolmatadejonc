@@ -13,6 +13,14 @@ export interface TranslationContent {
     title: string;
     history: string;
   };
+  gallery: {
+    title: string;
+    subtitle: string;
+  };
+  teams: {
+    title: string;
+    subtitle: string;
+  };
   sponsors: {
     title: string;
   };
@@ -22,6 +30,15 @@ export interface TranslationContent {
   becomeSponsor: {
     title: string;
     description: string;
+  };
+  becomeMember: {
+    title: string;
+    subtitle: string;
+    benefits: {
+      training: { title: string; description: string };
+      community: { title: string; description: string };
+      values: { title: string; description: string };
+    };
   };
   contact: {
     title: string;

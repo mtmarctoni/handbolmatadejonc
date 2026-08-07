@@ -1,0 +1,125 @@
+---
+import { getDictionary, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+const photos = [
+  { src: '/images/hero.jpg', alt: 'Partit del Club Handbol Mata de Jonc', category: 'matches' },
+  { src: '/images/hero.jpg', alt: 'Entrenament d\'equips', category: 'training' },
+  { src: '/images/hero.jpg', alt: 'Celebració de l\'equip', category: 'matches' },
+  { src: '/images/hero.jpg', alt: 'Acció de joc', category: 'matches' },
+  { src: '/images/hero.jpg', alt: 'Sessió d\'entrenament', category: 'training' },
+  { src: '/images/hero.jpg', alt: 'Moment comunitari', category: 'events' },
+];
+---
+
+<section id="gallery" class="py-32 bg-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 animate-fade-up">
+      <h2 class="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">
+        {t.gallery.title}
+      </h2>
+      <p class="text-lg text-muted max-w-2xl mx-auto">
+        {t.gallery.subtitle}
+      </p>
+    </div>
+    
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+      {photos.map((photo, index) => (
+        <div 
+          class="break-inside-avoid cursor-pointer group"
+          onclick={`window.__openLightbox(${index})`}
+        >
+          <div class="relative overflow-hidden rounded-2xl shadow-ambient hover:shadow-elevated transition-all duration-300 hover:scale-[1.02]">
+            <img 
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-dark/0 group-hover:bg-dark/30 transition-all duration-300 flex items-center justify-center">
+              <svg class="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<dialog id="lightbox" class="bg-dark/95 backdrop-blur-sm rounded-2xl max-w-5xl w-full p-4 md:p-8">
+  <div class="relative">
+    <button 
+      onclick="window.__closeLightbox()"
+      class="absolute -top-2 -right-2 md:top-0 md:right-0 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 z-10"
+      aria-label="Tancar"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img id="lightbox-image" src="/images/hero.jpg" alt="Foto de la galeria" class="w-full h-auto max-h-[80vh] object-contain rounded-xl" />
+    <div class="flex justify-center gap-2 mt-4">
+      <button onclick="window.__prevLightbox()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white text-sm transition-colors duration-200">
+        Anterior
+      </button>
+      <span id="lightbox-counter" class="px-4 py-2 text-white/60 text-sm"></span>
+      <button onclick="window.__nextLightbox()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white text-sm transition-colors duration-200">
+        Següent
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline define:vars={{ photos: JSON.stringify(photos) }}>
+  let currentIndex = 0;
+  const dialog = document.getElementById('lightbox');
+  const image = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  
+  window.__openLightbox = function(index) {
+    currentIndex = index;
+    updateLightbox();
+    dialog.showModal();
+  };
+  
+  window.__closeLightbox = function() {
+    dialog.close();
+  };
+  
+  window.__prevLightbox = function() {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    updateLightbox();
+  };
+  
+  window.__nextLightbox = function() {
+    currentIndex = (currentIndex + 1) % photos.length;
+    updateLightbox();
+  };
+  
+  function updateLightbox() {
+    image.src = photos[currentIndex].src;
+    image.alt = photos[currentIndex].alt;
+    counter.textContent = `${currentIndex + 1} / ${photos.length}`;
+  }
+  
+  dialog.addEventListener('click', function(e) {
+    if (e.target === dialog) {
+      window.__closeLightbox();
+    }
+  });
+  
+  document.addEventListener('keydown', function(e) {
+    if (!dialog.open) return;
+    if (e.key === 'Escape') window.__closeLightbox();
+    if (e.key === 'ArrowLeft') window.__prevLightbox();
+    if (e.key === 'ArrowRight') window.__nextLightbox();
+  });
+</script>
