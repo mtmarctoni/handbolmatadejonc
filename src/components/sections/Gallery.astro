@@ -9,12 +9,12 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 
 const photos = [
-  { src: "/images/hero.jpg", alt: "Partit del Club Handbol Mata de Jonc", category: "matches" },
-  { src: "/images/hero.jpg", alt: "Entrenament d'equips", category: "training" },
-  { src: "/images/hero.jpg", alt: "Celebració de l'equip", category: "matches" },
-  { src: "/images/hero.jpg", alt: "Acció de joc", category: "matches" },
-  { src: "/images/hero.jpg", alt: "Sessió d'entrenament", category: "training" },
-  { src: "/images/hero.jpg", alt: "Moment comunitari", category: "events" },
+  { src: "/images/hero.jpg", alt: t.gallery.photos.match, category: "matches" },
+  { src: "/images/hero.jpg", alt: t.gallery.photos.training, category: "training" },
+  { src: "/images/hero.jpg", alt: t.gallery.photos.celebration, category: "matches" },
+  { src: "/images/hero.jpg", alt: t.gallery.photos.action, category: "matches" },
+  { src: "/images/hero.jpg", alt: t.gallery.photos.session, category: "training" },
+  { src: "/images/hero.jpg", alt: t.gallery.photos.community, category: "events" },
 ];
 ---
 
@@ -28,17 +28,20 @@ const photos = [
         {t.gallery.subtitle}
       </p>
     </div>
-    
+
     <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
       {photos.map((photo, index) => (
-        <div 
-          class="break-inside-avoid cursor-pointer group"
+        <button
+          type="button"
+          class="break-inside-avoid cursor-pointer group block w-full text-left"
           onclick={`window.__openLightbox(${index})`}
         >
           <div class="relative overflow-hidden rounded-2xl shadow-ambient hover:shadow-elevated transition-all duration-300 hover:scale-[1.02]">
-            <img 
+            <img
               src={photo.src}
               alt={photo.alt}
+              width="146"
+              height="108"
               loading="lazy"
               class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -48,78 +51,70 @@ const photos = [
               </svg>
             </div>
           </div>
-        </div>
+        </button>
       ))}
     </div>
   </div>
 </section>
 
-<dialog id="lightbox" class="bg-dark/95 backdrop-blur-sm rounded-2xl max-w-5xl w-full p-4 md:p-8">
+<dialog
+  id="lightbox"
+  aria-label={t.gallery.lightbox.alt}
+  class="bg-dark/95 backdrop-blur-sm rounded-2xl max-w-5xl w-full p-4 md:p-8"
+>
   <div class="relative">
-    <button 
+    <button
       onclick="window.__closeLightbox()"
       class="absolute -top-2 -right-2 md:top-0 md:right-0 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 z-10"
-      aria-label="Tancar"
+      aria-label={t.gallery.lightbox.close}
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
-    <img id="lightbox-image" src="/images/hero.jpg" alt="Foto de la galeria" class="w-full h-auto max-h-[80vh] object-contain rounded-xl" />
+    <img
+      id="lightbox-image"
+      src="/images/hero.jpg"
+      alt={t.gallery.lightbox.alt}
+      width="146"
+      height="108"
+      class="w-full h-auto max-h-[80vh] object-contain rounded-xl"
+    />
     <div class="flex justify-center gap-2 mt-4">
       <button onclick="window.__prevLightbox()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white text-sm transition-colors duration-200">
-        Anterior
+        {t.gallery.lightbox.prev}
       </button>
       <span id="lightbox-counter" class="px-4 py-2 text-white/60 text-sm"></span>
       <button onclick="window.__nextLightbox()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white text-sm transition-colors duration-200">
-        Següent
+        {t.gallery.lightbox.next}
       </button>
     </div>
   </div>
 </dialog>
 
-<script is:inline define:vars={{ photos: JSON.stringify(photos) }}>
-  let currentIndex = 0;
-  const dialog = document.getElementById('lightbox');
-  const image = document.getElementById('lightbox-image');
-  const counter = document.getElementById('lightbox-counter');
-  
-  window.__openLightbox = function(index) {
-    currentIndex = index;
-    updateLightbox();
-    dialog.showModal();
-  };
-  
-  window.__closeLightbox = function() {
-    dialog.close();
-  };
-  
-  window.__prevLightbox = function() {
-    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-    updateLightbox();
-  };
-  
-  window.__nextLightbox = function() {
-    currentIndex = (currentIndex + 1) % photos.length;
-    updateLightbox();
-  };
-  
-  function updateLightbox() {
-    image.src = photos[currentIndex].src;
-    image.alt = photos[currentIndex].alt;
-    counter.textContent = `${currentIndex + 1} / ${photos.length}`;
-  }
-  
-  dialog.addEventListener('click', function(e) {
-    if (e.target === dialog) {
-      window.__closeLightbox();
+<script define:vars={{ photos }}>
+  import { createLightboxController } from "../../lib/lightbox";
+
+  const dialog = document.getElementById("lightbox");
+  const image = document.getElementById("lightbox-image");
+  const counter = document.getElementById("lightbox-counter");
+  const lightbox = createLightboxController(photos, { dialog, image, counter });
+
+  window.__openLightbox = (index) => lightbox.open(index);
+  window.__closeLightbox = () => lightbox.close();
+  window.__prevLightbox = () => lightbox.prev();
+  window.__nextLightbox = () => lightbox.next();
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      lightbox.close();
     }
   });
-  
-  document.addEventListener('keydown', function(e) {
+
+  document.addEventListener("keydown", (event) => {
     if (!dialog.open) return;
-    if (e.key === 'Escape') window.__closeLightbox();
-    if (e.key === 'ArrowLeft') window.__prevLightbox();
-    if (e.key === 'ArrowRight') window.__nextLightbox();
+    if (event.key === "Escape") lightbox.close();
+    if (event.key === "ArrowLeft") lightbox.prev();
+    if (event.key === "ArrowRight") lightbox.next();
   });
 </script>

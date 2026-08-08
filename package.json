@@ -30,6 +30,7 @@
     "@biomejs/biome": "2.5.4",
     "@types/node": "^26.1.1",
     "dependency-cruiser": "^18.1.1",
+    "jsdom": "^30.0.1",
     "knip": "^6.32.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10"
