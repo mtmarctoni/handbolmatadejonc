@@ -1,13 +1,13 @@
 ---
-import SEO from '../components/SEO.astro';
-import '../styles/global.css';
+import SEO from "../components/SEO.astro";
+import "../styles/global.css";
 
 interface Props {
   locale: string;
   title?: string;
 }
 
-const { locale, title = 'Inici' } = Astro.props;
+const { locale, title = "Inici" } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,8 +20,5 @@ const { locale, title = 'Inici' } = Astro.props;
   </head>
   <body class="min-h-screen bg-light text-dark font-body">
     <slot />
-  <!-- impeccable-live-start -->
-<script is:inline src="http://localhost:8400/live.js"></script>
-<!-- impeccable-live-end -->
-</body>
+  </body>
 </html>
