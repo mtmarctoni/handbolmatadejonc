@@ -78,6 +78,7 @@
   }
 }
 
+/* biome-ignore-start lint/complexity/noImportantStyles: the reduced-motion a11y block must override animation classes */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -96,6 +97,7 @@
     transform: none !important;
   }
 }
+/* biome-ignore-end lint/complexity/noImportantStyles: end of reduced-motion override */
 
 @keyframes float {
   0%,
