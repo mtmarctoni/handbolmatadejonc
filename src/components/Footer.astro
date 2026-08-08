@@ -17,21 +17,21 @@ const t = getDictionary(locale);
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
       <div>
         <div class="flex items-center gap-3 mb-6">
-          <img src="/images/logo.png" alt={t.site.name} class="h-12 w-auto" />
+          <img src="/images/logo.png" alt={t.site.name} width="150" height="179" class="h-12 w-auto" />
           <div>
             <h3 class="text-xl font-heading font-bold">{t.site.name}</h3>
             <p class="text-xs font-accent text-white/50 uppercase tracking-widest">{t.site.tagline}</p>
           </div>
         </div>
         <p class="text-white/70 leading-relaxed">
-          Club Handbol Mata de Jonc - Tots Units Feim Força!
+          {t.footer.tagline}
         </p>
       </div>
 
       <div>
         <h3 class="text-lg font-heading font-bold mb-6 flex items-center gap-2">
           <span class="w-2 h-2 bg-primary rounded-full"></span>
-          Contacte
+          {t.contact.title}
         </h3>
         <address class="not-italic text-white/70 space-y-4">
           <p class="flex items-start gap-3">
@@ -59,7 +59,7 @@ const t = getDictionary(locale);
       <div>
         <h3 class="text-lg font-heading font-bold mb-6 flex items-center gap-2">
           <span class="w-2 h-2 bg-primary rounded-full"></span>
-          Navegació
+          {t.footer.navigation}
         </h3>
         <nav class="space-y-3">
           <a href="#about" class="block text-white/70 hover:text-primary transition-colors">{t.nav.about}</a>
@@ -80,7 +80,7 @@ const t = getDictionary(locale);
         {t.footer.copyright}
       </p>
       <p class="text-white/50 text-sm font-accent">
-        Fet amb <span class="text-primary">&hearts;</span> a Palma
+        {t.footer.madeWith}
       </p>
     </div>
   </div>

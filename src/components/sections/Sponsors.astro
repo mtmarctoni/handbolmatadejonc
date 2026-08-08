@@ -8,15 +8,18 @@ interface Props {
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 
+const sponsorNames = t.sponsors.names;
+const collaboratorNames = t.sponsors.collaboratorNames;
+
 const sponsors = [
-  { name: "Patrocinador 1", logo: "/images/sponsor1.png" },
-  { name: "Patrocinador 2", logo: "/images/sponsor2.png" },
-  { name: "Patrocinador 3", logo: "/images/sponsor3.png" },
+  { name: sponsorNames[0], logo: "/images/sponsor1.png" },
+  { name: sponsorNames[1], logo: "/images/sponsor2.png" },
+  { name: sponsorNames[2], logo: "/images/sponsor3.png" },
 ];
 
 const collaborators = [
-  { name: "Col·laborador 1", logo: "/images/collaborator1.png" },
-  { name: "Col·laborador 2", logo: "/images/collaborator2.png" },
+  { name: collaboratorNames[0], logo: "/images/collaborator1.png" },
+  { name: collaboratorNames[1], logo: "/images/collaborator2.png" },
 ];
 ---
 
@@ -27,7 +30,7 @@ const collaborators = [
         {t.sponsors.title}
       </h2>
       <p class="text-lg text-muted max-w-2xl mx-auto">
-        Gràcies als nostres patrocinadors i col·laboradors per fer possible el nostre projecte.
+        {t.sponsors.intro}
       </p>
     </div>
     
@@ -39,7 +42,7 @@ const collaborators = [
             class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center h-40 transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-primary/20 animate-fade-up"
             style={`animation-delay: ${index * 0.1}s`}
           >
-            <img src={sponsor.logo} alt={sponsor.name} class="max-h-20 max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity" />
+            <img src={sponsor.logo} alt={sponsor.name} width="160" height="80" loading="lazy" class="max-h-20 max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity" />
           </div>
         ))}
       </div>
@@ -53,7 +56,7 @@ const collaborators = [
             class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center h-40 transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-primary/20 animate-fade-up"
             style={`animation-delay: ${0.3 + index * 0.1}s`}
           >
-            <img src={collaborator.logo} alt={collaborator.name} class="max-h-20 max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity" />
+            <img src={collaborator.logo} alt={collaborator.name} width="160" height="80" loading="lazy" class="max-h-20 max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity" />
           </div>
         ))}
       </div>
