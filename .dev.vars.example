@@ -1,4 +1,0 @@
-# Copy to .dev.vars (gitignored) and fill in for local development.
-# {{CONTACT_ENV_LINES}}: the env keys the contact module needs, one per line
-# (RESEND_API_KEY= and TURNSTILE_SECRET_KEY=). Omit entirely when contact is off.
-{{CONTACT_ENV_LINES}}

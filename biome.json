@@ -87,16 +87,6 @@
       }
     },
     {
-      "includes": ["scripts/**"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noConsole": "off"
-          }
-        }
-      }
-    },
-    {
       "includes": ["src/actions/**"],
       "linter": {
         "rules": {

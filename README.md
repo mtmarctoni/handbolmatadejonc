@@ -33,17 +33,17 @@ pnpm check
 
 ## Deployment
 
-Deploy to Cloudflare Pages:
+The site builds to static HTML in `dist/` and is hosted on Cloudflare Pages. Connect the GitHub repository to Cloudflare Pages for automatic deployments on push to `main`.
+
+Manual deploy:
 
 ```bash
 # Build the site
 pnpm build
 
-# Deploy using wrangler
-npx wrangler pages deploy dist --project-name handbolmatadejonc
+# Deploy using wrangler (Cloudflare Pages)
+pnpm dlx wrangler pages deploy dist --project-name handbolmatadejonc
 ```
-
-Or connect your GitHub repository to Cloudflare Pages for automatic deployments.
 
 ## Project Structure
 
