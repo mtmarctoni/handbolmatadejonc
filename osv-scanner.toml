@@ -1,5 +1,3 @@
 # 2026-07-15: esbuild 0.27.7 (CVSS 2.5, low) — build tool only, not runtime.
 # astro@6.4.8 pins esbuild ^0.27; fix blocked on astro 7 major upgrade.
-[[IgnoredVulns]]
-id = "GHSA-g7r4-m6w7-qqqr"
-reason = "Build tool only; astro@6.4.8 pins esbuild ^0.27, fix requires astro 7 major."
+# Removed 2026-08-08: resolved by the astro 7 upgrade (esbuild 0.28.1).

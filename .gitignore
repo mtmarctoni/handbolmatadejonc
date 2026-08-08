@@ -8,3 +8,7 @@ dist/
 .dev.vars
 .env
 .env.local
+lighthouse-old/
+lighthouse-new/
+lighthouse-old-mobile/
+lighthouse-new-mobile/
