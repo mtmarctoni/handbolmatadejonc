@@ -1,5 +1,5 @@
 ---
-import { getDictionary, type Locale } from '../../i18n';
+import { getDictionary, type Locale } from "../../i18n";
 
 interface Props {
   locale: Locale;
@@ -9,20 +9,20 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 
 const benefits = [
-  { 
+  {
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
-    title: t.becomeMember.benefits.training.title, 
-    description: t.becomeMember.benefits.training.description 
+    title: t.becomeMember.benefits.training.title,
+    description: t.becomeMember.benefits.training.description,
   },
-  { 
+  {
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
-    title: t.becomeMember.benefits.community.title, 
-    description: t.becomeMember.benefits.community.description 
+    title: t.becomeMember.benefits.community.title,
+    description: t.becomeMember.benefits.community.description,
   },
-  { 
+  {
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
-    title: t.becomeMember.benefits.values.title, 
-    description: t.becomeMember.benefits.values.description 
+    title: t.becomeMember.benefits.values.title,
+    description: t.becomeMember.benefits.values.description,
   },
 ];
 ---
@@ -63,7 +63,7 @@ const benefits = [
         
         <a
           href="#contact"
-          class="group inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-dark transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
+          class="group inline-flex items-center gap-3 bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg hover:brightness-110 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
         >
           {t.contact.title}
           <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

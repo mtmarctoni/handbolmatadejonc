@@ -8,13 +8,13 @@ interface Props {
 
 const {
   title,
-  description = 'Club Handbol Mata de Jonc - Tots Units Feim Força!',
-  canonicalURL = 'https://www.handbolmatadejonc.com',
+  description = "Club Handbol Mata de Jonc - Tots Units Feim Força!",
+  canonicalURL = "https://www.handbolmatadejonc.com",
 } = Astro.props;
 
-const locales = ['ca', 'es', 'en'];
-const siteName = 'Club Handbol Mata de Jonc';
-const ogImage = 'https://www.handbolmatadejonc.com/og-image.png';
+const locales = ["ca", "es", "en"];
+const siteName = "Club Handbol Mata de Jonc";
+const ogImage = "https://www.handbolmatadejonc.com/og-image.png";
 ---
 
 <meta charset="utf-8" />
@@ -24,8 +24,8 @@ const ogImage = 'https://www.handbolmatadejonc.com/og-image.png';
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png" />
+<link rel="apple-touch-icon" href="/images/favicon.png" />
 
 {locales.map((loc) => (
   <link

@@ -1,6 +1,6 @@
 ---
-import { getDictionary, type Locale } from '../../i18n';
-import ContactForm from './ContactForm.astro';
+import { getDictionary, type Locale } from "../../i18n";
+import ContactForm from "./ContactForm.astro";
 
 interface Props {
   locale: Locale;
@@ -46,7 +46,7 @@ const t = getDictionary(locale);
             </span>
             Correu electrònic
           </h3>
-          <a href={`mailto:${t.contact.email}`} class="text-primary font-semibold hover:text-primary-dark transition-colors">
+          <a href={`mailto:${t.contact.email}`} class="text-primary-dark font-semibold hover:text-primary transition-colors">
             {t.contact.email}
           </a>
         </div>
@@ -60,7 +60,7 @@ const t = getDictionary(locale);
             </span>
             Telèfon
           </h3>
-          <a href={`tel:+34${t.contact.phone.replace(/\s/g, '')}`} class="text-primary font-semibold hover:text-primary-dark transition-colors">
+          <a href={`tel:+34${t.contact.phone.replace(/\s/g, '')}`} class="text-primary-dark font-semibold hover:text-primary transition-colors">
             {t.contact.phone}
           </a>
         </div>
