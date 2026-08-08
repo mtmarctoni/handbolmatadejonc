@@ -1,5 +1,5 @@
 ---
-import { getDictionary, type Locale } from '../../i18n';
+import { getDictionary, type Locale } from "../../i18n";
 
 interface Props {
   locale: Locale;
@@ -9,14 +9,14 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 
 const sponsors = [
-  { name: 'Patrocinador 1', logo: '/images/sponsor1.png' },
-  { name: 'Patrocinador 2', logo: '/images/sponsor2.png' },
-  { name: 'Patrocinador 3', logo: '/images/sponsor3.png' },
+  { name: "Patrocinador 1", logo: "/images/sponsor1.png" },
+  { name: "Patrocinador 2", logo: "/images/sponsor2.png" },
+  { name: "Patrocinador 3", logo: "/images/sponsor3.png" },
 ];
 
 const collaborators = [
-  { name: 'Col·laborador 1', logo: '/images/collaborator1.png' },
-  { name: 'Col·laborador 2', logo: '/images/collaborator2.png' },
+  { name: "Col·laborador 1", logo: "/images/collaborator1.png" },
+  { name: "Col·laborador 2", logo: "/images/collaborator2.png" },
 ];
 ---
 

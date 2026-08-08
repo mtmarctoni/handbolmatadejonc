@@ -1,5 +1,5 @@
 ---
-import { getDictionary, type Locale } from '../../i18n';
+import { getDictionary, type Locale } from "../../i18n";
 
 interface Props {
   locale: Locale;
@@ -9,12 +9,12 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 
 const photos = [
-  { src: '/images/hero.jpg', alt: 'Partit del Club Handbol Mata de Jonc', category: 'matches' },
-  { src: '/images/hero.jpg', alt: 'Entrenament d\'equips', category: 'training' },
-  { src: '/images/hero.jpg', alt: 'Celebració de l\'equip', category: 'matches' },
-  { src: '/images/hero.jpg', alt: 'Acció de joc', category: 'matches' },
-  { src: '/images/hero.jpg', alt: 'Sessió d\'entrenament', category: 'training' },
-  { src: '/images/hero.jpg', alt: 'Moment comunitari', category: 'events' },
+  { src: "/images/hero.jpg", alt: "Partit del Club Handbol Mata de Jonc", category: "matches" },
+  { src: "/images/hero.jpg", alt: "Entrenament d'equips", category: "training" },
+  { src: "/images/hero.jpg", alt: "Celebració de l'equip", category: "matches" },
+  { src: "/images/hero.jpg", alt: "Acció de joc", category: "matches" },
+  { src: "/images/hero.jpg", alt: "Sessió d'entrenament", category: "training" },
+  { src: "/images/hero.jpg", alt: "Moment comunitari", category: "events" },
 ];
 ---
 
