@@ -22,17 +22,17 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.1",
+    "astro": "^7.2.4",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@biomejs/biome": "2.5.4",
-    "@types/node": "^26.1.1",
-    "dependency-cruiser": "^18.1.1",
+    "@astrojs/check": "^0.9.10",
+    "@biomejs/biome": "2.5.9",
+    "@types/node": "^26.2.0",
+    "dependency-cruiser": "^18.2.0",
     "jsdom": "^30.0.1",
-    "knip": "^6.32.0",
+    "knip": "^6.32.2",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   }
 }
