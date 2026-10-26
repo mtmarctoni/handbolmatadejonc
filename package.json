@@ -22,7 +22,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.1",
+    "astro": "^7.3.8",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
@@ -33,6 +33,6 @@
     "jsdom": "^30.0.1",
     "knip": "^6.32.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.12"
   }
 }
